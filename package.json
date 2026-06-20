@@ -1,0 +1,32 @@
+{
+  "name": "building.nicolasmino.dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "hugo server --disableFastRender --ignoreCache --noHTTPCache --buildDrafts --cleanDestinationDir",
+    "hugo": "hugo",
+    "hugo:build": "hugo --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "hugo-bin": {
+    "buildTags": "extended"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.5.0",
+    "hugo-bin": "^0.149.2",
+    "postcss": "^8.5.15",
+    "postcss-cli": "^11.0.1"
+  },
+  "allowScripts": {
+    "hugo-bin@0.149.2": true
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.1",
+    "@tailwindcss/typography": "^0.5.20",
+    "tailwindcss": "^4.3.1"
+  }
+}
