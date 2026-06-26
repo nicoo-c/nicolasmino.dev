@@ -1,4 +1,4 @@
-baseURL: http://localhost:1313/
+baseURL: https://nicoo-c.github.io/nicolasmino.dev/
 locale: es-es
 title: nicolasmino.dev
 theme: terminal
