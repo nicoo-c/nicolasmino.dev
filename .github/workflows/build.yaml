@@ -6,6 +6,11 @@ on:
       - alt
   workflow_dispatch:
 
+env:
+  NODE_VERSION: 24
+  HUGO_VERSION: 0.163.3
+
+
 permissions:
   contents: read
   pages: write
@@ -32,7 +37,7 @@ jobs:
       - name: Setup Node.js 
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '${{ env.NODE_VERSION }}'
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
