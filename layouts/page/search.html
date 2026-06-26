@@ -12,7 +12,7 @@
 
 <script>
 window.addEventListener('DOMContentLoaded', async (event) => {
-    const pagefindUrl = "{{ "pagefind/pagefind.js" | relURL }}";
+    const pagefindUrl = "{{ absURL "pagefind/pagefind.js" }}";
     
     try {
         const pagefind = await import(pagefindUrl);
