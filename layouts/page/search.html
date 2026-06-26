@@ -2,56 +2,48 @@
 <div class="post">
   <h1 class="post-title">{{ .Title }}</h1>
   
-  <div class="search-container">
-    <input type="text" id="search-input" placeholder="Escribe para buscar..." autocomplete="off" 
-           style="width: 100%; padding: 15px; margin-bottom: 30px; background: transparent; color: var(--foreground); border: 2px solid var(--accent); font-family: inherit; font-size: 1.1em; outline: none;">
+  <div class="search-container" style="margin-top: 20px;">
+    <input type="text" id="search-input" placeholder="Escribe para buscar artículos..." 
+           style="width: 100%; padding: 10px; background: var(--background); color: var(--foreground); border: 2px solid var(--accent); border-radius: 4px;">
     
-    <ul id="search-results" style="list-style: none; margin-left: 0; padding: 0;"></ul>
+    <ul id="search-results" style="list-style: none; padding: 0; margin-top: 20px;"></ul>
   </div>
 </div>
 
 <script>
-  window.addEventListener('DOMContentLoaded', async (event) => {
-    const input = document.getElementById('search-input');
-    const results = document.getElementById('search-results');
-
+window.addEventListener('DOMContentLoaded', async (event) => {
+    const pagefindUrl = "{{ "pagefind/pagefind.js" | relURL }}";
+    
     try {
-      const pagefind = await import("/pagefind/pagefind.js");
-      
-      input.addEventListener('input', async function() {
-        const query = this.value;
-        results.innerHTML = ''; 
+        const pagefind = await import(pagefindUrl);
+        await pagefind.init();
 
-        if (query.length === 0) return;
+        const searchInput = document.getElementById("search-input");
+        const resultsList = document.getElementById("search-results");
 
-        const search = await pagefind.search(query);
+        searchInput.addEventListener("input", async (e) => {
+            const query = e.target.value;
+            resultsList.innerHTML = ""; 
 
-        if (search.results.length === 0) {
-          results.innerHTML = '<li style="opacity: 0.7;">No se encontraron resultados...</li>';
-          return;
-        }
-
-        const topResults = search.results.slice(0, 8);
-
-        for (const result of topResults) {
-          const data = await result.data(); 
-          
-          const li = document.createElement('li');
-          li.style.marginBottom = '20px';
-          li.style.paddingBottom = '15px';
-          li.style.borderBottom = '1px dashed var(--accent)';
-          
-          li.innerHTML = `
-            <a href="${data.url}" style="font-size: 1.25em; font-weight: bold; color: var(--accent); text-decoration: none;">${data.meta.title}</a>
-            <p style="font-size: 0.9em; opacity: 0.8; margin-top: 5px;">${data.excerpt}</p>
-          `;
-          results.appendChild(li);
-        }
-      });
+            if (query.length > 0) {
+                const search = await pagefind.search(query);
+                
+                for (const result of search.results) {
+                    const data = await result.data();
+                    const li = document.createElement("li");
+                    li.style.marginBottom = "15px";
+                    
+                    li.innerHTML = `
+                        <a href="${data.url}" style="color: var(--accent); font-weight: bold; text-decoration: none;">${data.meta.title}</a>
+                        <p style="margin-top: 5px; font-size: 0.9em; opacity: 0.8;">${data.excerpt}</p>
+                    `;
+                    resultsList.appendChild(li);
+                }
+            }
+        });
     } catch (e) {
-      console.warn("Pagefind aún no ha indexado el sitio. Ejecuta el comando de construcción.");
-      results.innerHTML = '<li style="opacity: 0.7;">[Sistema]: El índice de búsqueda se generará al compilar el sitio.</li>';
+        console.log("Pagefind aún no está indexado en este entorno.");
     }
-  });
+});
 </script>
 {{ end }}
