@@ -1,4 +1,6 @@
-baseURL: https://nicolasmino.dev/
+baseURL: https://nicoo-c.github.io/nicolasmino.dev/
+relativeURLs: true
+canonifyURLs: true
 locale: es-es
 title: nicolasmino.dev
 theme: terminal
