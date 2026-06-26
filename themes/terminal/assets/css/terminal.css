@@ -1,0 +1,287 @@
+/* Placeholder file for your custom settings. */
+/* You can get the color scheme variables from https://panr.github.io/terminal-css/ */
+/* Fira Code: https://github.com/tonsky/FiraCode */
+@import url('https://cdn.staticdelivr.com/gfonts/css2?family=Fira+Code:wght@300..700&display=swap');
+
+:root {
+  --background: #fffbf7 !important;
+  --foreground: #45372b !important;
+  --accent: #df7020 !important;
+  --radius: 0;
+  --font-size: 1rem;
+  --line-height: 1.54em;
+}
+
+html.dark, html.dark body {
+  --background: #1a170f !important;
+  --foreground: #eceae5 !important;
+  --accent: #eec35e !important;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+.icon-sun {
+  display: none;
+}
+.icon-moon {
+  display: block;
+}
+
+html.dark .icon-moon {
+  display: none !important;
+}
+html.dark .icon-sun {
+  display: block !important;
+}
+
+.header__tools .tool-btn {
+  background: transparent;
+  cursor: pointer;
+  padding: 1px;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+ 
+}
+
+.header__tools .tool-btn:hover {
+    background-color: var(--accent) !important;
+    color: var(--background) !important;
+    transform: none;
+    filter: none !important;
+}
+
+/* Animation for the view transition effect */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+html.dark::view-transition-new(root) {
+  z-index: 2;
+  animation: sweep-down 0.5s steps(10, end) forwards;
+}
+
+html:not(.dark)::view-transition-new(root) {
+  z-index: 2;
+  animation: sweep-up 0.5s steps(10, end) forwards;
+}
+
+@keyframes sweep-down {
+  0% {
+    /* Oculto, recortado 100% desde abajo */
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes sweep-up {
+  0% {
+    /* Oculto, recortado 100% desde arriba */
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Menu styles */
+
+.navigation-menu__inner li a,
+.menu--mobile .menu__dropdown li a {
+    color: var(--foreground) !important;
+    padding: 2px 0px;
+    display: inline-block !important; 
+    transition: background-color 0.2s ease, color 0.2s ease, text-decoration-color 0.2s ease !important;
+    text-decoration: none !important;
+}
+
+.navigation-menu__inner li a:hover,
+.menu--mobile .menu__dropdown li a:hover {
+    background-color: var(--accent) !important;
+    color: var(--background) !important; 
+}
+
+.navigation-menu__inner li a.active,
+.menu--mobile .menu__dropdown li a.active {
+    text-decoration: underline !important;
+    text-decoration-color: var(--accent) !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 8px !important;
+    
+    color: var(--foreground) !important; 
+    background-color: transparent !important;
+}
+
+.navigation-menu__inner li a.active:hover,
+.menu--mobile .menu__dropdown li a.active:hover {
+    background-color: var(--accent) !important;
+    color: var(--background) !important;
+    text-decoration-color: var(--accent) !important;
+}
+
+
+@media (min-width: 1024px) {
+  .post-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    position: relative;
+    /* Transición suave cuando el layout cambia de tamaño */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .post-layout > .post {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .toc-wrapper {
+    width: 300px; 
+    flex-shrink: 0;
+    position: sticky;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .post-toc {
+    width: 100%;
+    max-height: calc(100vh - 130px);
+    
+    overflow-y: auto;
+    overflow-x: hidden; 
+    
+    transition: opacity 0.2s ease; 
+
+    
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge */
+  }
+
+  .toc-toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    padding: 1px;
+    transition: all 0.2s ease;
+  }
+  .toc-toggle-btn:hover {
+    background-color: var(--accent) !important;
+    color: var(--background) !important; 
+  }
+
+
+  
+  .post-layout.toc-hidden .toc-wrapper {
+    width: 30px; 
+  }
+  
+  .post-layout.toc-hidden .post-toc {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .post-layout.toc-hidden .icon-horizontal { display: none; }
+  .post-layout.toc-hidden .icon-vertical { display: block !important; }
+}
+
+@media (max-width: 1023px) {
+  .post-layout { display: block; }
+  .toc-toggle-btn { display: none; }
+  .toc-wrapper { margin-top: 40px; border-top: 2px dashed var(--foreground); padding-top: 20px; }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.post-toc h2 {
+  font-size: 1.2rem; 
+  color: var(--accent); 
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.post-toc ul li a {
+  font-size: 0.95rem; 
+  color: var(--foreground);
+  text-decoration: none;
+  line-height: 1.6; 
+}
+
+.post-toc .table-of-contents ul { 
+    list-style-type: none !important;
+    counter-reset: toc-counter; 
+    padding-left: 0 !important; 
+    color: var(--accent); 
+    
+}
+
+.post-toc .table-of-contents li {
+    counter-increment: toc-counter; 
+}
+
+.post-toc .table-of-contents li > a::before {
+    content: counters(toc-counter, ".") ". "; 
+    color: var(--accent); 
+    font-weight: bold;
+}
+
+#TableOfContents li a.active-toc {
+    color: var(--accent) !important;
+    font-weight: bold !important;
+    text-decoration: none; 
+    text-decoration-color: var(--accent);
+    text-underline-offset: 4px;
+}
+
+#TableOfContents li a {
+    transition: all 0.2s ease;
+}
+
+#TableOfContents li a:hover:not(.active-toc) {
+    color: var(--accent) !important; 
+    padding-left: 5px;
+}
+
+::selection {
+    background-color: var(--foreground) !important;
+    color: var(--background) !important;
+}
+
+::-moz-selection { /* Firefox */
+    background-color: var(--foreground) !important;
+    color: var(--background) !important;
+}
+
+.dark ::selection {
+    background-color: var(--accent) !important;
+    color: var(--background) !important;
+}
+
+.dark ::-moz-selection { /* Firefox */
+    background-color: var(--accent) !important;
+    color: var(--background) !important;
+}

@@ -1,0 +1,91 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+  flex: 1;
+}
+
+.header__logo::after {
+  content: "";
+  background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 10px);
+  display: block;
+  width: 100%;
+  right: 10px;
+}
+.header__logo a {
+  flex: 0 0 auto;
+  max-width: 100%;
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background: var(--accent);
+  color: var(--background);
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+@media print {
+  .header {
+    display: none;
+  }
+}
+
+/* --- ESTILOS DE LA CAJA DE HERRAMIENTAS --- */
+
+.header__tools {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espacio entre los iconos */
+  
+  /* Aquí creamos la separación y el muro contra el que choca la línea */
+  margin-left: 15px;
+  padding-left: 15px;
+
+}
+
+/* Ajuste visual para los botones */
+.tool-btn {
+  background: none;
+  border: none;
+  color: var(--accent); /* Usa el mismo color del tema */
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.tool-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+
+.tool-language {
+  display: flex;
+  align-items: center;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 684px) {
+  .header__tools {
+    gap: 10px;
+    padding-left: 10px;
+    margin-left: 10px;
+  }
+}

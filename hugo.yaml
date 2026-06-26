@@ -1,25 +1,68 @@
 baseURL: http://localhost:1313/
-languageCode: es-419
-title: building.nicolasmino.dev
-module:
-   hugoVersion:
-    extended: true
-    min: "0.112.0"
-    mounts:
-    - source: assets
-      target: assets
-    - disableWatch: true
-      source: hugo_stats.json
-      target: assets/notwatching/hugo_stats.json
+locale: es-es
+title: nicolasmino.dev
+theme: terminal
+defaultContentLanguage: "es"
 params:
-  contact:
-    email: info@example.org
-    phone: +1 202-555-1212
-build:
-  buildStats:
-    enable: true
-  cachebusters:
-  - source: 'assets/notwatching/hugo_stats\.json'
-    target: css
-  - source: '(postcss|tailwind)\.config\.js'
-    target: css
+  FullWidthTheme: true
+  Toc: true # default
+  Logo:
+    logoText: "nicolas@mino"
+    LogoHomeLink: "/"
+  showLanguageSelector: true
+  contentTypeName: "posts"
+  
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+  tableOfContents:
+    startLevel: 2
+    endLevel: 6
+    ordered: false 
+
+languages:
+  es:
+    label: "es" 
+    title: "nicolasmino.dev"
+    weight: 1
+    params:
+      logo:
+        logoText: "nicolas@mino"
+        logoHomeLink: "/"
+      ReadMore: Leer más
+      readOtherPosts: "Leer otros artículos"
+    menu:
+      main:
+        - identifier: "sobre-mi"
+          name: "Sobre mí"
+          url: "/sobre-mi/"
+          weight: 10
+        - identifier: "proyectos"
+          name: "Proyectos"
+          url: "/proyectos/"
+          weight: 20
+
+  en:
+    label: "en"
+    title: "nicolasmino.dev"
+    weight: 2
+    params:
+      logo:
+        logoText: "nicolas@mino"
+        logoHomeLink: "/en/"
+      ReadMore: Read more
+      readOtherPosts: "Read other posts"
+    menu:
+      main:
+        - identifier: "about"
+          name: "About"
+          url: "/en/about/"
+          weight: 10
+        - identifier: "projects"
+          name: "Projects"
+          url: "/en/projects/"
+          weight: 20
