@@ -5,7 +5,7 @@ theme: terminal
 defaultContentLanguage: "es"
 params:
   FullWidthTheme: true
-  Toc: true # default
+  Toc: true
   Logo:
     logoText: "nicolas@mino"
     LogoHomeLink: "/"
