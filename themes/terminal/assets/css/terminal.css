@@ -128,7 +128,6 @@ html:not(.dark)::view-transition-new(root) {
     text-decoration-color: var(--accent) !important;
 }
 
-
 @media (min-width: 1024px) {
   .post-layout {
     display: flex;
@@ -182,8 +181,6 @@ html:not(.dark)::view-transition-new(root) {
     color: var(--background) !important; 
   }
 
-
-  
   .post-layout.toc-hidden .toc-wrapper {
     width: 30px; 
   }
@@ -284,4 +281,27 @@ html:not(.dark)::view-transition-new(root) {
 .dark ::-moz-selection { /* Firefox */
     background-color: var(--accent) !important;
     color: var(--background) !important;
+}
+
+.blinking-cursor {
+    font-weight: bold;
+    color: var(--foreground);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.social-btn svg {
+    width: 28px;
+    height: 28px;
+    color: var(--foreground); 
+    transition: all 0.2s ease;
+}
+
+.social-btn:hover svg {
+    background-color: var(--accent);
+    color: var(--background);
 }

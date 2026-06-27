@@ -4,6 +4,34 @@
       {{ .Content }}
     </div>
   {{ end }}
+  <div align="center">  
+  <div  class="terminal-typing-container" style="margin-bottom: 2.5rem;">
+    
+    <div style="font-size: 2rem; font-weight: bold;">
+      <span id="typewriter-text-1"></span><span id="cursor-1" class="blinking-cursor">_</span>
+    </div>
+
+    <div style="font-size: 1rem; margin-top: 30px; opacity: 0.9;">
+      <span id="typewriter-text-2"></span><span id="cursor-2" class="blinking-cursor" style="display: none;">_</span>
+    </div>
+
+  </div>
+  <div id="social-links" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 2.5rem; opacity: 1">
+    
+    <a href="https://github.com/nicoo-c" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Pixel Icon by HackerNoon - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M23 9v6h-1v2h-1v2h-1v1h-1v1h-1v1h-2v1h-1v-5h-1v-1h1v-1h2v-1h1v-1h1V9h-1V6h-2v1h-1v1h-1V7h-4v1H9V7H8V6H6v3H5v5h1v1h1v1h2v2H7v-1H6v-1H4v1h1v2h1v1h3v3H8v-1H6v-1H5v-1H4v-1H3v-2H2v-2H1V9h1V7h1V5h1V4h1V3h2V2h2V1h6v1h2v1h2v1h1v1h1v2h1v2z"/></svg>
+    </a>
+
+    <a href="https://www.linkedin.com/in/nicolasminoberdu/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Pixel Icon by HackerNoon - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M22 2V1H2v1H1v20h1v1h20v-1h1V2zm-9 10v8h-3V9h3v1h1V9h4v1h1v10h-3v-8zM4 8V5h3v3zm3 1v11H4V9z"/></svg>
+    </a>
+
+    <a href="mailto:nicolas.mino.berdu@gmail.com" title="Correo electrónico" class="social-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Pixel Icon by HackerNoon - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M21 5V4H3v1H1v14h1v1h20v-1h1V5zm-11 7v-1H9v-1H8V9H7V8H6V7H5V6h14v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-2v-1zM4 7v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h2v-1h1v-1h1v-1h1v-1h1v-1h1V9h1V8h1V7h1v11H3V7z"/></svg>
+    </a>
+
+  </div>
+  </div>
   <div class="posts">
     {{ $isntDefault := not (or (eq (trim $.Site.Params.contentTypeName " ") "posts") (eq (trim $.Site.Params.contentTypeName " ") "")) }}
     {{ $contentTypeName := cond $isntDefault (string $.Site.Params.contentTypeName) "posts" }}
