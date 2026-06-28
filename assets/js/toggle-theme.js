@@ -1,3 +1,4 @@
+/* Theme Toggle Script */
 (function() {
   const setTheme = (isDarkMode) => {
     if (isDarkMode) {
