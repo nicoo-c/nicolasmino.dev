@@ -41,11 +41,14 @@ languages:
         - identifier: "sobre-mi"
           name: "Sobre mí"
           url: "/sobre-mi/"
-          weight: 10
         - identifier: "proyectos"
           name: "Proyectos"
           url: "/proyectos/"
-          weight: 20
+        - identifier: "partituras"
+          name: "Partituras"
+          url: "/partituras/"
+          
+
 
   en:
     label: "English"
@@ -62,8 +65,10 @@ languages:
         - identifier: "about"
           name: "About"
           url: "/en/about/"
-          weight: 10
         - identifier: "projects"
           name: "Projects"
           url: "/en/projects/"
-          weight: 20
+        - identifier: "sheet music"
+          name: "Sheet music"
+          url: "/sheet-music/"
+         
